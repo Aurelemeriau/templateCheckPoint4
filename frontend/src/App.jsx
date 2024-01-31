@@ -1,41 +1,44 @@
-import Counter from "./components/Counter";
-import logo from "./assets/logo.svg";
-
-import "./App.css";
+import { Link, Outlet } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+  const [auth, setAuth] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React !</p>
-
-        <Counter />
-
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          {auth == null ? (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          ) : (
+            <li>
+              <button
+                type="button"
+                onClick={() => {
+                  setAuth(null);
+                }}
+              >
+                Logout
+              </button>
+            </li>
+          )}
+        </ul>
+      </nav>
+      {auth && <p>Hello {auth.pseudo}</p>}
+      <main>
+        <Outlet context={{ auth, setAuth }} />
+      </main>
+    </>
   );
 }
 

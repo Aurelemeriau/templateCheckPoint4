@@ -1,0 +1,13 @@
+/* Styles pour les champs valides */
+.valid,
+.valid:focus {
+  border: 2px solid green; /* Couleur verte pour les champs valides */
+  outline: none; /* Désactiver l'outline pour éviter la couverture */
+}
+
+/* Styles pour les champs invalides */
+.invalid,
+.invalid:focus {
+  border: 2px solid red; /* Couleur rouge pour les champs invalides */
+  outline: none; /* Désactiver l'outline pour éviter la couverture */
+}

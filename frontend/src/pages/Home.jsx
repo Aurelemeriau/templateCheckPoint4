@@ -126,7 +126,7 @@ function Home() {
   };
   return (
     <>
-      <h1>Les randonnées</h1>
+      <h1>Rando</h1>
       <form className="center">
         <label htmlFor="products-select">
           Filter by{" "}
@@ -159,25 +159,32 @@ function Home() {
       </ul>
       {auth && <Post onPostAddition={handlePostAddition} />}
       {auth && (
-        <button type="button" onClick={handleClick}>
-          Voir mes posts
-        </button>
+        <div className="voir">
+          <button type="button" onClick={handleClick}>
+            Voir mes randonnées
+          </button>
+        </div>
       )}
       <div>
         {perso.map((rando) => (
-          <div key={rando.id}>
-            {rando.title} {rando.categorie} {rando.description} {rando.distance}
-            <img
-              style={{ width: "100px", height: "50px" }}
-              src={`${import.meta.env.VITE_BACKEND_URL}/${rando.imageUrl}`}
-              alt={rando.title}
-            />
-            <button type="button" onClick={() => handleModif(rando.id)}>
-              Modifier
-            </button>
-            <button type="button" onClick={() => handleDelete(rando.id)}>
-              Supprimer
-            </button>
+          <div className="ajout" key={rando.id}>
+            <div className="card">
+              <img
+                style={{ width: "100px", height: "50px" }}
+                src={`${import.meta.env.VITE_BACKEND_URL}/${rando.imageUrl}`}
+                alt={rando.title}
+              />
+              <p>{rando.title}</p> <p>{rando.categorie}</p>{" "}
+              <p>{rando.description}</p> <p>{rando.distance}</p>
+            </div>
+            <div className="boutons">
+              <button type="button" onClick={() => handleModif(rando.id)}>
+                Modifier
+              </button>
+              <button type="button" onClick={() => handleDelete(rando.id)}>
+                Supprimer
+              </button>
+            </div>
           </div>
         ))}
       </div>

@@ -9,7 +9,7 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Accueil</Link>
           </li>
           {auth == null ? (
             <>
@@ -17,7 +17,7 @@ function App() {
                 <Link to="/login">Login</Link>
               </li>
               <li>
-                <Link to="/register">Register</Link>
+                <Link to="/register">Créer un compte</Link>
               </li>
             </>
           ) : (
@@ -28,7 +28,7 @@ function App() {
                   setAuth(null);
                 }}
               >
-                Logout
+                Se déconnecter
               </button>
             </li>
           )}

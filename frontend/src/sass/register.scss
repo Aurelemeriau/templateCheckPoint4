@@ -1,13 +1,45 @@
-/* Styles pour les champs valides */
-.valid,
-.valid:focus {
-  border: 2px solid green; /* Couleur verte pour les champs valides */
-  outline: none; /* Désactiver l'outline pour éviter la couverture */
-}
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-/* Styles pour les champs invalides */
-.invalid,
-.invalid:focus {
-  border: 2px solid red; /* Couleur rouge pour les champs invalides */
-  outline: none; /* Désactiver l'outline pour éviter la couverture */
+  .pseudo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      width: 100%;
+      height: 4vh;
+      border-radius: 7px;
+    }
+  }
+
+  .confirmPassword {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      width: 100%;
+      height: 4vh;
+      border-radius: 7px;
+    }
+  }
+
+  /* Styles pour les champs valides */
+  .valid,
+  .valid:focus {
+    border: 2px solid green; /* Couleur verte pour les champs valides */
+    outline: none; /* Désactiver l'outline pour éviter la couverture */
+  }
+
+  /* Styles pour les champs invalides */
+  .invalid,
+  .invalid:focus {
+    border: 2px solid red; /* Couleur rouge pour les champs invalides */
+    outline: none; /* Désactiver l'outline pour éviter la couverture */
+  }
 }

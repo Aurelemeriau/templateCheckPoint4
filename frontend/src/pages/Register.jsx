@@ -52,39 +52,42 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="pseudo">pseudo</label>{" "}
-        <input ref={pseudoRef} type="pseudo" id="pseudo" />
-      </div>
-      <div>
-        <label htmlFor="email">email</label>{" "}
-        <input ref={emailRef} type="email" id="email" />
-      </div>
-      <div>
-        <label htmlFor="password">password</label>{" "}
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-          className={isPasswordValid ? "valid" : "invalid"}
-        />
-        {isPasswordValid ? "✅" : "❌"} {`length: ${password.length} >= 8`}
-      </div>
-      <div>
-        <label htmlFor="confirm-password">confirm password</label>{" "}
-        <input
-          type="password"
-          id="confirm-password"
-          value={confirmPassword}
-          onChange={handleConfirmPasswordChange}
-          className={isConfirmPasswordValid ? "valid" : "invalid"}
-        />
-        {isConfirmPasswordValid ? "✅" : "❌"}
-      </div>
-      <button type="submit">Send</button>
-    </form>
+    <div className="main">
+      <form onSubmit={handleSubmit}>
+        <div className="pseudo">
+          <input
+            ref={pseudoRef}
+            type="pseudo"
+            id="pseudo"
+            placeholder="pseudo"
+          />
+        </div>
+        <div className="email">
+          <input ref={emailRef} type="email" id="email" placeholder="email" />
+        </div>
+        <div className="password">
+          <input
+            type="password"
+            id="password"
+            placeholder="password"
+            value={password}
+            onChange={handlePasswordChange}
+            className={isPasswordValid ? "valid" : "invalid"}
+          />
+        </div>
+        <div className="confirmPassword">
+          <input
+            type="password"
+            id="confirm-password"
+            placeholder="confirm password"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+            className={isConfirmPasswordValid ? "valid" : "invalid"}
+          />
+        </div>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
   );
 }
 

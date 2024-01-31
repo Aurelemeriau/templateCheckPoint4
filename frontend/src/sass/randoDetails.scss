@@ -1,0 +1,14 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.comments {
+  border: solid 1px black;
+  border-radius: 5px;
+  width: 80vw;
+  padding: 10px;
+}

@@ -49,25 +49,22 @@ function Login() {
 
   // Rendu du composant formulaire
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        {/* Champ pour l'email */}
-        <label htmlFor="email">email</label>{" "}
-        <input ref={emailRef} type="email" id="email" placeholder="email" />
-      </div>
-      <div>
-        {/* Champ pour le mot de passe */}
-        <label htmlFor="password">password</label>{" "}
-        <input
-          type="password"
-          id="password"
-          ref={passwordRef}
-          placeholder="password"
-        />
-      </div>
-      {/* Bouton de soumission du formulaire */}
-      <button type="submit">Send</button>
-    </form>
+    <div className="main">
+      <form onSubmit={handleSubmit}>
+        <div className="email">
+          <input ref={emailRef} type="email" id="email" placeholder="email" />
+        </div>
+        <div className="password">
+          <input
+            type="password"
+            id="password"
+            ref={passwordRef}
+            placeholder="password"
+          />
+        </div>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
   );
 }
 

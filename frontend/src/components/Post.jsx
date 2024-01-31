@@ -65,7 +65,11 @@ function Post({ onPostAddition }) {
   };
 
   return (
-    <form encType="multipart/form-data" onSubmit={handleSubmit2}>
+    <form
+      className="formulaire"
+      encType="multipart/form-data"
+      onSubmit={handleSubmit2}
+    >
       <input type="text" placeholder="title" name="title" />
       <input type="text" placeholder="categorie" name="categorie" />
       <input type="text" placeholder="decription" name="description" />

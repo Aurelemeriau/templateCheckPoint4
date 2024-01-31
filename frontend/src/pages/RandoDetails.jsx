@@ -64,18 +64,22 @@ function RandoDetails() {
   };
 
   return (
-    <div>
-      <RandoCard data={product[0]} />
+    <div className="body">
+      <RandoCard className="card" data={product[0]} />
       <h2>Commentaires</h2>
       {data.map((comments) => (
-        <option value={comments.description} key={comments.id}>
+        <option
+          className="comments"
+          value={comments.description}
+          key={comments.id}
+        >
           {comments.description}
         </option>
       ))}
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="ajouter votre commentaire"
+          placeholder="Ajoutez votre commentaire"
           name="description"
         />
         <button type="submit">valider</button>

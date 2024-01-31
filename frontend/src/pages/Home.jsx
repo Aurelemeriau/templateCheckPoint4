@@ -16,7 +16,7 @@ function Home() {
   const handleClick = () => {
     if (auth) {
       axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/randos/${auth.id}`, {
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/randos/user/${auth.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -29,7 +29,6 @@ function Home() {
         });
     }
   };
-  // [auth, token, data]);
 
   const handleModif = async (id) => {
     try {
@@ -145,14 +144,14 @@ function Home() {
 
       <ul className="categorie-list" id="categorie-list">
         {data
-          .filter((cat) => {
-            return cat.categorie === categories || categories === "";
+          .filter((cate) => {
+            return cate.categorie === categories || categories === "";
           })
           .map((cat) => {
             return (
-              <Link to={`/products/${cat.id}`} key={cat.id}>
+              <Link to={`/randos/${cat.id}`} key={cat.id}>
                 <li className="categorie-item">
-                  <RandoCard key={cat.id} data={[cat]} />
+                  <RandoCard key={`${cat.id}`} data={cat} />
                 </li>
               </Link>
             );

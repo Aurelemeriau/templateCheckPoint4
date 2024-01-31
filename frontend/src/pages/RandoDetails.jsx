@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
-import axios from "axios";
 import { useLoaderData, useRevalidator, useParams } from "react-router-dom";
+import axios from "axios";
 import RandoCard from "../components/RandoCard";
 
 function RandoDetails() {
@@ -10,6 +10,7 @@ function RandoDetails() {
   const product = useLoaderData();
   const revalidator = useRevalidator();
   const { id } = useParams();
+
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(localStorage.getItem("token") || ""); // Assumez que vous avez une fonction pour récupérer le token
 
@@ -64,7 +65,7 @@ function RandoDetails() {
 
   return (
     <div>
-      <RandoCard data={product} />
+      <RandoCard data={product[0]} />
       <h2>Commentaires</h2>
       {data.map((comments) => (
         <option value={comments.description} key={comments.id}>
@@ -88,7 +89,6 @@ export const loadProductsById = async ({ params }) => {
     const response = await axios.get(
       `${import.meta.env.VITE_BACKEND_URL}/api/randos/${params.id}`
     );
-    // console.log(response.data);
     return response.data;
   } catch (error) {
     return null;

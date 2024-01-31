@@ -34,7 +34,7 @@ function App() {
           )}
         </ul>
       </nav>
-      {auth && <p>Hello {auth.pseudo}</p>}
+      {auth && <p>Bienvenue {auth.pseudo}</p>}
       <main>
         <Outlet context={{ auth, setAuth }} />
       </main>

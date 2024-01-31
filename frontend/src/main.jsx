@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products/:id",
+        path: "/randos/:id",
         element: <RandoDetails />,
         loader: loadProductsById,
       },

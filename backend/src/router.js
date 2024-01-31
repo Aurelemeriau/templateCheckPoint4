@@ -42,7 +42,7 @@ const authControllers = require("./controllers/authControllers");
 
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
-router.get("/randos/:userId", randoControllers.getRandoByUser);
+router.get("/randos/user/:userId", randoControllers.getRandoByUser);
 router.get("/randos", randoControllers.browse);
 router.get("/comments", commentairesControllers.browse);
 router.get(

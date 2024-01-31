@@ -12,7 +12,6 @@ function Post({ onPostAddition }) {
   });
 
   const [image, setImage] = useState(null);
-  // const [userId] = useState(localStorage.getItem("userId"));
   const { auth } = useOutletContext();
 
   // eslint-disable-next-line consistent-return

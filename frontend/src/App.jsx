@@ -31,6 +31,7 @@ function App() {
                 type="button"
                 onClick={() => {
                   setAuth(null);
+                  window.location.reload();
                 }}
               >
                 Se déconnecter

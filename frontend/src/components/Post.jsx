@@ -2,8 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { useOutletContext } from "react-router-dom";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 
-function Post({ onPostAddition }) {
+function Post({ handleClick, onPostAddition }) {
   const axiosInstance = axios.create({
     baseURL: `${import.meta.env.VITE_BACKEND_URL}/api`,
     headers: {
@@ -29,9 +30,11 @@ function Post({ onPostAddition }) {
       description === "" ||
       categorie === "" ||
       distance === ""
-    )
-      // eslint-disable-next-line no-alert
-      return alert("merci de remplir tous les champs requis");
+    ) {
+      toast.error("merci de remplir tous les champs requis");
+    } else {
+      toast.success("rando ajoutée avec succès");
+    }
 
     try {
       const formData = new FormData();
@@ -59,6 +62,9 @@ function Post({ onPostAddition }) {
       e.target.distance.value = "";
 
       onPostAddition();
+      if (typeof handleClick === "function") {
+        handleClick();
+      }
     } catch (error) {
       console.error(error);
     }
@@ -90,11 +96,14 @@ function Post({ onPostAddition }) {
         name="distance"
       />
       <input
+        id="file"
+        className="fileInput"
         type="file"
-        name={image}
+        name="image"
         accept="image/*"
         onChange={(e) => setImage(e.target.files[0])}
       />
+      <label htmlFor="file">Choisir une image</label>
       <input type="hidden" name="userId" value={auth.id} />
       <button type="submit">valider</button>
     </form>
@@ -103,6 +112,7 @@ function Post({ onPostAddition }) {
 
 Post.propTypes = {
   onPostAddition: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Post;

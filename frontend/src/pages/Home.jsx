@@ -6,6 +6,7 @@ import {
   NavLink,
 } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 import Post from "../components/Post";
 
 function Home() {
@@ -34,21 +35,21 @@ function Home() {
     }
   };
 
-  const handleModif = async (id) => {
-    try {
-      const response = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/randos/${id}`
-      );
-      if (response.status === 200) {
-        handleClick();
-      } else {
-        // eslint-disable-next-line no-alert
-        alert("Modification échouée");
-      }
-    } catch (e) {
-      console.error("Error for editing");
-    }
-  };
+  // const handleModif = async (id) => {
+  //   try {
+  //     const response = await axios.put(
+  //       `${import.meta.env.VITE_BACKEND_URL}/api/randos/${id}`
+  //     );
+  //     if (response.status === 200) {
+  //       handleClick();
+  //       toast.success("modification réussie");
+  //     } else {
+  //       toast.error("modification échouée");
+  //     }
+  //   } catch (e) {
+  //     console.error("Error for editing");
+  //   }
+  // };
 
   const handleDelete = async (id) => {
     try {
@@ -59,9 +60,9 @@ function Home() {
       );
       if (response.status === 200) {
         handleClick();
+        toast.success("suppression réussie");
       } else {
-        // eslint-disable-next-line no-alert
-        alert("Suppression échouée");
+        toast.error("suppression échouée");
       }
     } catch (e) {
       console.error("Error for deleting");
@@ -130,6 +131,7 @@ function Home() {
   };
   return (
     <>
+      {auth && <p className="pseudo1">Bienvenue {auth.pseudo}</p>}
       <h1>Randossimo</h1>
       <NavLink to="/register">
         <p>Inscrivez-vous pour pourvoir poster une randonnée</p>
@@ -171,7 +173,9 @@ function Home() {
             );
           })}
       </ul>
-      {auth && <Post onPostAddition={handlePostAddition} />}
+      {auth && (
+        <Post onPostAddition={handlePostAddition} handleClick={handleClick} />
+      )}
       {auth && (
         <div className="voir">
           <button type="button" onClick={handleClick}>
@@ -192,9 +196,9 @@ function Home() {
                 <p>Titre: {rando.title}</p> <p>Catégorie: {rando.categorie}</p>{" "}
               </div>
               <div className="boutons">
-                <button type="button" onClick={() => handleModif(rando.id)}>
+                {/* <button type="button" onClick={() => handleModif(rando.id)}>
                   Modifier
-                </button>
+                </button> */}
                 <button type="button" onClick={() => handleDelete(rando.id)}>
                   Supprimer
                 </button>

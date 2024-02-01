@@ -1,5 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import logo from "./assets/picto-rando.png";
 
 function App() {
@@ -7,6 +9,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <nav>
         <ul>
           <img className="logo" src={logo} alt="logo" />
@@ -36,7 +39,6 @@ function App() {
           )}
         </ul>
       </nav>
-      {auth && <p className="pseudo1">Bienvenue {auth.pseudo}</p>}
       <main>
         <Outlet context={{ auth, setAuth }} />
       </main>

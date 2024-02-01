@@ -47,10 +47,6 @@ function Home() {
   };
 
   useEffect(() => {
-    handleClick();
-  }, [randos]);
-
-  useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/randos`
@@ -90,6 +86,7 @@ function Home() {
         setFormOpen(false);
         toast.success("Modification réussie");
         setReload(!reload);
+        handleClick();
       } else {
         toast.error("Modification échouée");
       }
@@ -265,8 +262,8 @@ function Home() {
             },
             content: {
               color: "lightsteelblue", // Text color
-              width: "45%", // Width of the modal
-              height: "10%", // Height of the modal
+              width: "70%", // Width of the modal
+              height: "30%", // Height of the modal
               margin: "auto", // Center the modal
               padding: "20px", // Padding inside the modal
               border: "1px solid black", // Border around the modal

@@ -55,7 +55,7 @@ function Home() {
     };
 
     fetchData();
-  }, []);
+  }, [perso, reload, randos]);
 
   // Ajoutez cette fonction dans votre composant
   const handleModif = (id) => {
@@ -158,7 +158,7 @@ function Home() {
 
   useEffect(() => {
     fetchData();
-  }, [perso, reload]);
+  }, [perso, reload, randos]);
 
   const [categories, setCategories] = useState("");
 

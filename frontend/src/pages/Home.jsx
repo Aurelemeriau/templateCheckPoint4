@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Modal from "react-modal";
 import Post from "../components/Post";
 
 function Home() {
@@ -17,6 +18,16 @@ function Home() {
   const [data, setData] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [randos, setRandos] = useState([]);
+  const [formValues, setFormValues] = useState({
+    title: "",
+    categorie: "",
+    description: "",
+    distance: "",
+    id: "",
+  });
+  const [formOpen, setFormOpen] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const handleClick = () => {
     if (auth) {
@@ -35,21 +46,57 @@ function Home() {
     }
   };
 
-  // const handleModif = async (id) => {
-  //   try {
-  //     const response = await axios.put(
-  //       `${import.meta.env.VITE_BACKEND_URL}/api/randos/${id}`
-  //     );
-  //     if (response.status === 200) {
-  //       handleClick();
-  //       toast.success("modification réussie");
-  //     } else {
-  //       toast.error("modification échouée");
-  //     }
-  //   } catch (e) {
-  //     console.error("Error for editing");
-  //   }
-  // };
+  useEffect(() => {
+    handleClick();
+  }, [randos]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/randos`
+      );
+      setRandos(response.data);
+    };
+
+    fetchData();
+  }, []);
+
+  // Ajoutez cette fonction dans votre composant
+  const handleModif = (id) => {
+    const rando = randos.find((r) => r.id === id);
+
+    if (rando) {
+      setFormValues(rando);
+      setFormOpen(true);
+    } else {
+      console.error(`No rando found with id ${id}`);
+    }
+  };
+
+  const handlePut = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/randos/${formValues.id}`,
+        formValues
+      );
+      if (response.status === 200) {
+        // Update the randos state with the updated rando
+        setRandos(
+          randos.map((rando) =>
+            rando.id === formValues.id ? formValues : rando
+          )
+        );
+        setFormOpen(false);
+        toast.success("Modification réussie");
+        setReload(!reload);
+      } else {
+        toast.error("Modification échouée");
+      }
+    } catch (error) {
+      toast.error("Une erreur s'est produite lors de la modification");
+    }
+  };
 
   const handleDelete = async (id) => {
     try {
@@ -114,7 +161,7 @@ function Home() {
 
   useEffect(() => {
     fetchData();
-  }, [perso]);
+  }, [perso, reload]);
 
   const [categories, setCategories] = useState("");
 
@@ -196,9 +243,9 @@ function Home() {
                 <p>Titre: {rando.title}</p> <p>Catégorie: {rando.categorie}</p>{" "}
               </div>
               <div className="boutons">
-                {/* <button type="button" onClick={() => handleModif(rando.id)}>
+                <button type="button" onClick={() => handleModif(rando.id)}>
                   Modifier
-                </button> */}
+                </button>
                 <button type="button" onClick={() => handleDelete(rando.id)}>
                   Supprimer
                 </button>
@@ -206,6 +253,61 @@ function Home() {
             </div>
           </div>
         ))}
+      </div>
+      <div>
+        {/* Your other components */}
+        <Modal
+          isOpen={formOpen}
+          onRequestClose={() => setFormOpen(false)}
+          style={{
+            overlay: {
+              backgroundColor: "rgba(0, 0, 0, 0.75)", // Overlay with black background and 75% opacity
+            },
+            content: {
+              color: "lightsteelblue", // Text color
+              width: "45%", // Width of the modal
+              height: "10%", // Height of the modal
+              margin: "auto", // Center the modal
+              padding: "20px", // Padding inside the modal
+              border: "1px solid black", // Border around the modal
+              borderRadius: "4px", // Rounded corners
+              background: "#fff", // White background
+              overflow: "auto", // Add scroll if content is too big
+            },
+          }}
+        >
+          <form onSubmit={handlePut}>
+            <input
+              type="text"
+              value={formValues.title}
+              onChange={(e) =>
+                setFormValues({ ...formValues, title: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              value={formValues.categorie}
+              onChange={(e) =>
+                setFormValues({ ...formValues, categorie: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              value={formValues.description}
+              onChange={(e) =>
+                setFormValues({ ...formValues, description: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              value={formValues.distance}
+              onChange={(e) =>
+                setFormValues({ ...formValues, distance: e.target.value })
+              }
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </Modal>
       </div>
     </>
   );

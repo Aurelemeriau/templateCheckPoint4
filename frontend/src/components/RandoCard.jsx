@@ -6,11 +6,15 @@ function RandoCard({ data }) {
     <div className="card">
       <div className="cardId" key={id}>
         <img
-          style={{ width: "100px", height: "50px" }}
+          // style={{ width: "100px", height: "50px" }}
+          className="image"
           src={`${import.meta.env.VITE_BACKEND_URL}/${imageUrl}`}
           alt={title}
         />
-        <p>{title}</p> <p>{categorie}</p> <p>{description}</p> <p>{distance}</p>
+      </div>
+      <div className="infos">
+        <p>Titre: {title}</p> <p>Categorie: {categorie}</p>{" "}
+        <p>Description: {description}</p> <p>Distance: {distance} km</p>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
+import logo from "./assets/picto-rando.png";
 
 function App() {
   const [auth, setAuth] = useState();
@@ -8,6 +9,7 @@ function App() {
     <>
       <nav>
         <ul>
+          <img className="logo" src={logo} alt="logo" />
           <li>
             <Link to="/">Accueil</Link>
           </li>
@@ -34,7 +36,7 @@ function App() {
           )}
         </ul>
       </nav>
-      {auth && <p>Bienvenue {auth.pseudo}</p>}
+      {auth && <p className="pseudo1">Bienvenue {auth.pseudo}</p>}
       <main>
         <Outlet context={{ auth, setAuth }} />
       </main>

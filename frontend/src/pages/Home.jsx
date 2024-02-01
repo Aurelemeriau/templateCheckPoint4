@@ -1,7 +1,11 @@
 import { useRef, useEffect, useState } from "react";
-import { useRevalidator, Link, useOutletContext } from "react-router-dom";
+import {
+  useRevalidator,
+  Link,
+  useOutletContext,
+  NavLink,
+} from "react-router-dom";
 import axios from "axios";
-import RandoCard from "../components/RandoCard";
 import Post from "../components/Post";
 
 function Home() {
@@ -126,12 +130,16 @@ function Home() {
   };
   return (
     <>
-      <h1>Rando</h1>
+      <h1>Randossimo</h1>
+      <NavLink to="/register">
+        <p>Inscrivez-vous pour pourvoir poster une randonnée</p>
+      </NavLink>
+
       <form className="center">
         <label htmlFor="products-select">
-          Filter by{" "}
+          {" "}
           <select id="products-select" onInput={handleInput}>
-            <option value="">voir les categorie</option>
+            <option value="">voir les categories</option>
 
             {uniqueCategories.map((category) => (
               <option value={category} key={category}>
@@ -151,7 +159,13 @@ function Home() {
             return (
               <Link to={`/randos/${cat.id}`} key={cat.id}>
                 <li className="categorie-item">
-                  <RandoCard key={`${cat.id}`} data={cat} />
+                  <img
+                    className="image"
+                    src={`${import.meta.env.VITE_BACKEND_URL}/${cat.imageUrl}`}
+                    alt={cat.title}
+                  />
+                  <div className="title">{cat.title}</div> <p> - </p>
+                  <div className="categorie">{cat.categorie}</div>
                 </li>
               </Link>
             );
@@ -170,20 +184,21 @@ function Home() {
           <div className="ajout" key={rando.id}>
             <div className="card">
               <img
-                style={{ width: "100px", height: "50px" }}
+                className="image"
                 src={`${import.meta.env.VITE_BACKEND_URL}/${rando.imageUrl}`}
                 alt={rando.title}
               />
-              <p>{rando.title}</p> <p>{rando.categorie}</p>{" "}
-              <p>{rando.description}</p> <p>{rando.distance}</p>
-            </div>
-            <div className="boutons">
-              <button type="button" onClick={() => handleModif(rando.id)}>
-                Modifier
-              </button>
-              <button type="button" onClick={() => handleDelete(rando.id)}>
-                Supprimer
-              </button>
+              <div className="infos">
+                <p>Titre: {rando.title}</p> <p>Catégorie: {rando.categorie}</p>{" "}
+              </div>
+              <div className="boutons">
+                <button type="button" onClick={() => handleModif(rando.id)}>
+                  Modifier
+                </button>
+                <button type="button" onClick={() => handleDelete(rando.id)}>
+                  Supprimer
+                </button>
+              </div>
             </div>
           </div>
         ))}

@@ -5,6 +5,21 @@ h1 {
   margin: 15px;
 }
 
+p {
+  color: #56a449;
+}
+
+#products-select {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -16,6 +31,32 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
+
+  .categorie-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    gap: 10px;
+    box-shadow: 4px 5px 5px #56a449;
+    height: 35vh;
+    width: 80vw;
+
+    .image {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
 }
 
 .voir {
@@ -31,20 +72,46 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  padding: 10px;
 
   .card {
-    border: solid 1px black;
-    border-radius: 10px;
+    box-shadow: 4px 5px 5px #56a449;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 10px;
+    align-items: flex-start;
+    height: 40vh;
+    width: 80vw;
+    overflow: hidden;
+
+    .image {
+      width: 100%;
+      height: 75%;
+      border-radius: 5px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .infos {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .boutons {
+    width: 100%;
+    padding: 10px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
   }
 }

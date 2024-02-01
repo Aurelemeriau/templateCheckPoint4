@@ -2,13 +2,28 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font: "Roboto Flex", sans-serif;
 }
 
 body {
   background: rgb(255, 255, 255);
+  overflow-x: hidden;
 }
 
 button {
   padding: 5px;
   border-radius: 5px;
+  background-color: #56a449;
+  color: white;
+  cursor: pointer;
+}
+
+h1 {
+  color: #56a449;
+  font-size: 3em;
+}
+
+h2 {
+  color: #56a449;
+  font-size: 2em;
 }

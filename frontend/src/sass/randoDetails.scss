@@ -4,11 +4,35 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-}
 
-.comments {
-  border: solid 1px black;
-  border-radius: 5px;
-  width: 80vw;
-  padding: 10px;
+  .comments {
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 80vw;
+    padding: 10px;
+    background-color: #b0dfa8;
+    &:nth-child(odd) {
+      align-self: flex-start;
+      margin-left: 5px;
+    }
+
+    &:nth-child(even) {
+      align-self: flex-end;
+      margin-right: 5px;
+    }
+  }
+
+  .inputComment {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+  }
 }

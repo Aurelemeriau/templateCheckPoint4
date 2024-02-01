@@ -67,16 +67,20 @@ function RandoDetails() {
     <div className="body">
       <RandoCard className="card" data={product[0]} />
       <h2>Commentaires</h2>
-      {data.map((comments) => (
+      {data.map((comments, index) => (
         <option
-          className="comments"
+          className={`comments ${index % 2 === 0 ? "left" : "right"}`}
           value={comments.description}
           key={comments.id}
         >
           {comments.description}
         </option>
       ))}
-      <form encType="multipart/form-data" onSubmit={handleSubmit}>
+      <form
+        className="inputComment"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           placeholder="Ajoutez votre commentaire"

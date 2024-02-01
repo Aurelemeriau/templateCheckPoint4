@@ -70,10 +70,25 @@ function Post({ onPostAddition }) {
       encType="multipart/form-data"
       onSubmit={handleSubmit2}
     >
-      <input type="text" placeholder="title" name="title" />
-      <input type="text" placeholder="categorie" name="categorie" />
-      <input type="text" placeholder="decription" name="description" />
-      <input type="text" placeholder="distance" name="distance" />
+      <input className="title" type="text" placeholder="titre" name="title" />
+      <input
+        className="categorie"
+        type="text"
+        placeholder="categorie"
+        name="categorie"
+      />
+      <input
+        className="description"
+        type="text"
+        placeholder="decription"
+        name="description"
+      />
+      <input
+        className="distance"
+        type="text"
+        placeholder="distance"
+        name="distance"
+      />
       <input
         type="file"
         name={image}

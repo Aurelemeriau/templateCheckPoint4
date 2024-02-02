@@ -39,6 +39,17 @@ function Register() {
         }
       );
 
+      if (!emailRef.current.value) {
+        toast.error("Veuillez entrer une adresse e-mail.");
+        return;
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(emailRef.current.value)) {
+        toast.error("Veuillez entrer une adresse e-mail valide.");
+        return;
+      }
+
       // Vérifiez ici si les mots de passe sont valides avant d'envoyer la requête
       if (!isPasswordValid || !isConfirmPasswordValid) {
         console.error("Mots de passe non valides");
@@ -47,8 +58,6 @@ function Register() {
         toast.success("Inscription réussie");
         navigate("/login");
       }
-
-      // Le reste du code pour envoyer la requête...
     } catch (err) {
       console.error(err);
     }
@@ -66,7 +75,13 @@ function Register() {
           />
         </div>
         <div className="email">
-          <input ref={emailRef} type="email" id="email" placeholder="email" />
+          <input
+            ref={emailRef}
+            required
+            type="email"
+            id="email"
+            placeholder="email"
+          />
         </div>
         <div className="password">
           <input

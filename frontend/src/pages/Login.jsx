@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Login() {
   // Références pour les champs email et mot de passe
@@ -35,11 +36,12 @@ function Login() {
 
         setAuth(auth.user);
         localStorage.setItem("token", auth.token);
-
+        toast.success("Connexion réussie");
         navigate("/");
       } else {
         // Log des détails de la réponse en cas d'échec
         console.info(response);
+        toast.error("Connexion échouée");
       }
     } catch (err) {
       // Log des erreurs possibles

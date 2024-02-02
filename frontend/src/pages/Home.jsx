@@ -252,24 +252,23 @@ function Home() {
         ))}
       </div>
       <div>
-        {/* Your other components */}
         <Modal
           isOpen={formOpen}
           onRequestClose={() => setFormOpen(false)}
           style={{
             overlay: {
-              backgroundColor: "rgba(0, 0, 0, 0.75)", // Overlay with black background and 75% opacity
+              backgroundColor: "rgba(0, 0, 0, 0.75)",
             },
             content: {
-              color: "lightsteelblue", // Text color
-              width: "70%", // Width of the modal
-              height: "30%", // Height of the modal
-              margin: "auto", // Center the modal
-              padding: "20px", // Padding inside the modal
-              border: "1px solid black", // Border around the modal
-              borderRadius: "4px", // Rounded corners
-              background: "#fff", // White background
-              overflow: "auto", // Add scroll if content is too big
+              color: "lightsteelblue",
+              width: "70%",
+              height: "30%",
+              margin: "auto",
+              padding: "20px",
+              border: "1px solid black",
+              borderRadius: "4px",
+              background: "#fff",
+              overflow: "auto",
             },
           }}
         >

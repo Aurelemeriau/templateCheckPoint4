@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Register() {
   const emailRef = useRef();
@@ -41,7 +42,9 @@ function Register() {
       // Vérifiez ici si les mots de passe sont valides avant d'envoyer la requête
       if (!isPasswordValid || !isConfirmPasswordValid) {
         console.error("Mots de passe non valides");
+        toast.error("Inscription échouée");
       } else if (response.status === 201) {
+        toast.success("Inscription réussie");
         navigate("/login");
       }
 

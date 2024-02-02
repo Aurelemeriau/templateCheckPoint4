@@ -3,10 +3,16 @@
 /* ************************************************************************* */
 
 // Import the manager modules responsible for handling data operations on the tables
+const RandoManager = require("./models/RandoManager");
 const ItemManager = require("./models/ItemManager");
+const UserManager = require("./models/UserManager");
+const CommentairesManager = require("./models/CommentairesManager");
 
 const managers = [
   ItemManager,
+  RandoManager,
+  UserManager,
+  CommentairesManager,
   // Add other managers here
 ];
 

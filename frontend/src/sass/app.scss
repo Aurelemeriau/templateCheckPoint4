@@ -1,0 +1,70 @@
+nav ul {
+  display: flex;
+  justify-content: space-arround;
+  align-items: center;
+  list-style: none;
+  padding: 10px;
+  background-color: #19611e;
+  gap: 10px;
+
+  .logo {
+    max-width: 5vw;
+  }
+
+  li {
+    padding: 10px;
+    font-weight: bold;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+    }
+  }
+
+  .login {
+    border: solid 2px white;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+      background-color: #56a449;
+    }
+  }
+
+  .register {
+    border: solid 2px white;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+      background-color: #56a449;
+    }
+  }
+}
+p {
+  text-align: center;
+}
+
+.center {
+  margin: 4vw;
+}
+
+.categorie-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 4vw;
+
+  a {
+    text-decoration: none;
+    color: #56a449;
+  }
+}
+
+.pseudo1 {
+  color: #56a449;
+  font-size: 1.5em;
+}

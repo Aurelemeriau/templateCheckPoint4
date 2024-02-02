@@ -177,9 +177,11 @@ function Home() {
     <>
       {auth && <p className="pseudo1">Bienvenue {auth.pseudo}</p>}
       <h1>Randossimo</h1>
-      <NavLink to="/register">
-        <p>Inscrivez-vous pour pourvoir poster une randonnée</p>
-      </NavLink>
+      {!auth && (
+        <NavLink to="/register">
+          <p>Inscrivez-vous pour pourvoir poster une randonnée</p>
+        </NavLink>
+      )}
 
       <form className="center">
         <label htmlFor="products-select">

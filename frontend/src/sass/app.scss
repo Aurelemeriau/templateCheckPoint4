@@ -4,7 +4,8 @@ nav ul {
   align-items: center;
   list-style: none;
   padding: 10px;
-  background-color: #56a449;
+  background-color: #19611e;
+  gap: 10px;
 
   .logo {
     max-width: 5vw;
@@ -17,6 +18,29 @@ nav ul {
     a {
       text-decoration: none;
       color: white;
+      font-size: 15px;
+    }
+  }
+
+  .login {
+    border: solid 2px white;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+      background-color: #56a449;
+    }
+  }
+
+  .register {
+    border: solid 2px white;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+      background-color: #56a449;
     }
   }
 }

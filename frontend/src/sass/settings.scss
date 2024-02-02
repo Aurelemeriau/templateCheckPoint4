@@ -17,14 +17,19 @@ button {
   box-shadow: 1px 1px 1px black;
   color: white;
   cursor: pointer;
+
+  &:hover {
+    scale: 1.1;
+    background-color: #19611e;
+  }
 }
 
 h1 {
-  color: #56a449;
+  color: #19611e;
   font-size: 3em;
 }
 
 h2 {
-  color: #56a449;
+  color: #19611e;
   font-size: 2em;
 }

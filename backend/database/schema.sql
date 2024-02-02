@@ -45,6 +45,13 @@ INSERT INTO
         `userId`
     )
 VALUES (
+        "Le lac de la Maix",
+        "Montagne",
+        "le côté mystique du lieu, qui résonne aussi bien auprès des randonneurs que des pèlerins et des artistes !",
+        12,
+        "montagne2.jpg",
+        1
+    ),(
         "Sentier des douaniers",
         "Mer",
         "Au départ du Mont-Saint-Michel, le GR 34 est un sentier de grande randonnée qui longe l’intégralité (ou presque) du littoral breton sur près de 1 700 kilomètres pour s’achever à Saint-Nazaire, en Loire-Atlantique.",
@@ -66,13 +73,6 @@ Il est annoncé comme étant l'un des sentiers de grande randonnée les plus dur
         "Dominant la Sicile du haut de 3327 m, le (très) actif mont Etna est le plus haut volcan d’Europe. Inscrit au patrimoine de l’UNESCO, il est protégé par le Parco de’ll Etna, dans lequel on trouve une foule de sentiers de randonnées. Quatre cratères actifs sont accessibles aux randonneurs dans la zone du sommet. Mais pour voir le cratère principal, il faut un guide (et des conditions favorables). Une des randonnées populaires pour s’y rendre est la boucle d’environ 17 km, classée difficile, au départ du refuge de la Sapienza.",
         19,
         "volcan.jpg",
-        1
-    ),(
-        "Le lac de la Maix",
-        "Montagne",
-        "le côté mystique du lieu, qui résonne aussi bien auprès des randonneurs que des pèlerins et des artistes !",
-        12,
-        "montagne2.jpg",
         1
     ),(
         "Crève Tête",

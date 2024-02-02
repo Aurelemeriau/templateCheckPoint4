@@ -18,10 +18,10 @@ function App() {
           </li>
           {auth == null ? (
             <>
-              <li>
+              <li className="login">
                 <Link to="/login">Login</Link>
               </li>
-              <li>
+              <li className="register">
                 <Link to="/register">Créer un compte</Link>
               </li>
             </>
